@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 export function Cart() {
   return (
-    <Pressable style={styles.cartStyle}>
+    <Pressable>
       <Text>
         <Ionicons size={28} style={styles.icon} name="cart-outline" />
       </Text>
@@ -14,9 +14,6 @@ export function Cart() {
 }
 
 const styles = StyleSheet.create({
-  cartStyle: {
-    marginLeft: 10,
-  },
   icon: {
     color: "#FFFFFF",
   },
