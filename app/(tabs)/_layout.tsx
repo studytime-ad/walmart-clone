@@ -3,15 +3,20 @@ import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
+
+// Hooks
 import { useColorScheme } from '@/hooks/useColorScheme';
+import useThemeColors from '@/hooks/useThemeColors';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const themeColors = useThemeColors();
+  console.log(themeColors)
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: themeColors.primary,
         headerShown: false,
       }}>
       <Tabs.Screen

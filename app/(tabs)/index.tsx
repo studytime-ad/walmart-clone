@@ -5,7 +5,7 @@ import { Header } from '@/components/Header';
 export default function HomeScreen() {
   return (
     <View>
-      <Header />
+      <Header pageName={"shop"} />
       <Text>
         xxxxx
       </Text>

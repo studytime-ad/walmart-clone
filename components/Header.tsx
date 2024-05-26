@@ -1,25 +1,47 @@
-import { StyleSheet, Image, Text, TextInput, View, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  TextInput,
+  View,
+  SafeAreaView,
+} from "react-native";
 
 // Components
 import { SearchBar } from "./SearchBar";
 import { Cart } from "./Cart";
 
+// Hooks
+import useThemeColors from "@/hooks/useThemeColors";
 
+interface HeaderProps {
+  pageName: string;
+}
 
-export function Header() {
+export function Header({ pageName }: HeaderProps) {
+  const colors = useThemeColors();
+
   return (
-    <View style={styles.header}>
+    <View style={[styles.header, { backgroundColor: colors.primary }]}>
       <SafeAreaView>
-        {/* Header Text */}
-        <View style={styles.greetingRow}>
-          <Text style={styles.headerText}>Hi, Emilia</Text>          
-          <Image style={styles.walmartImage} source={require('../assets/images/walmart_logo_icon.png')} />
-          <Cart />
-        </View>
-
+        {pageName === "shop" ? (
+          <>
+            {/* Header Text */}
+            <View style={styles.greetingRow}>
+              <Text style={styles.headerText}>Hi, Emilia</Text>
+              <Image
+                style={styles.walmartImage}
+                source={require("../assets/images/walmart_logo_icon.png")}
+              />
+            </View>
+          </>
+        ) : (
+          <></>
+        )}
         {/* TODO: Search Bar */}
         <View style={styles.searchBarView}>
           <SearchBar />
+          <Cart />
         </View>
       </SafeAreaView>
     </View>
@@ -29,7 +51,6 @@ export function Header() {
 const styles = StyleSheet.create({
   header: {
     height: "40%",
-    backgroundColor: "#0071dc",
   },
   greetingRow: {
     flexDirection: "row",
@@ -43,12 +64,13 @@ const styles = StyleSheet.create({
   },
   walmartImage: {
     width: 30,
-    height: 30
+    height: 30,
+    right: "500%",
   },
   searchBarView: {
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "center",
-    width: "100%",
+    width: "90%",
   },
 });
